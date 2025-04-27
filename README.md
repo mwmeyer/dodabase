@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dodabase
 
-## Getting Started
+Dodabase is a directory of AI coding tools and libraries that help developers build, test, and deploy software more efficiently. This project is built with [Next.js](https://nextjs.org) and provides a clean, searchable interface for discovering AI-powered development tools.
 
-First, run the development server:
+## Project Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Dodabase catalogs various types of AI coding tools including:
+- **Extensions**: AI tools that integrate with code editors and IDEs
+- **CLI Tools**: Command-line interfaces for AI-assisted coding
+- **Generators**: Tools that can generate code or entire applications
+- **Libraries**: Code libraries with AI capabilities
+
+## Adding New Tools
+
+Tools are defined in the `src/data/tools.md` file using YAML frontmatter. To add a new tool:
+
+1. Open `src/data/tools.md`
+2. Add a new entry to the `tools` array in the frontmatter section
+3. Follow this format:
+
+```yaml
+- name: "Tool Name"
+  description: "A brief description of what the tool does"
+  type: "extension|cli|generator|library"
+  url: "https://github.com/username/repository"
+  license: "License type (e.g., MIT, Apache-2.0)"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Example:
+```yaml
+- name: "Aider"
+  description: "Terminal-based AI pair programming with local LLM support"
+  type: "cli"
+  url: "https://github.com/paul-gauthier/aider"
+  license: "Apache-2.0"
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Tool Types
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+When adding a new tool, use one of these types:
+- `extension`: Tools that integrate with code editors/IDEs
+- `cli`: Command-line interface tools
+- `generator`: Tools that generate code or applications
+- `library`: Code libraries with AI capabilities
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `src/data/tools.md`: Contains the list of tools in YAML frontmatter
+- `src/lib/tools.ts`: Functions for parsing and retrieving tool data
+- `src/components/ToolsList.tsx`: Component for displaying the tools
+- `src/app/page.tsx`: Main page that renders the tools list
